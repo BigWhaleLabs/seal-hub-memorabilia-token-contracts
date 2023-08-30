@@ -26,7 +26,12 @@ async function main() {
     const constructorArguments =
       verifierContractName === 'NullifierCreatorVerifier'
         ? [version]
-        : [version, verifierAddress, SEAL_HUB_CONTRACT_ADDRESS]
+        : [
+            version,
+            'https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-memorabilia-token/main/metadata/{id}.json',
+            verifierAddress,
+            SEAL_HUB_CONTRACT_ADDRESS,
+          ]
     const verifier = await Verifier.deploy(...constructorArguments)
     console.log(
       'Deploy tx gas price:',

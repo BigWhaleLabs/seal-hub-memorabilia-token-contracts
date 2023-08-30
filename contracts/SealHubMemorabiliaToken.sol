@@ -59,12 +59,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@big-whale-labs/seal-hub-kit/contracts/SealHubChecker.sol";
 import "@big-whale-labs/versioned-contract/contracts/Versioned.sol";
 import "./NullifierCreatorVerifier.sol";
 
-contract SealHubMemorabiliaToken is ERC20, SealHubChecker, Versioned {
+contract SealHubMemorabiliaToken is ERC1155, SealHubChecker, Versioned {
   // State
   mapping(uint => bool) public nullifiers;
   NullifierCreatorVerifier private nullifierCreatorVerifier;
@@ -72,11 +72,12 @@ contract SealHubMemorabiliaToken is ERC20, SealHubChecker, Versioned {
 
   constructor(
     string memory _version,
+    string memory _uri,
     address _nullifierCreatorVerifier,
     address _sealHub
   )
     Versioned(_version)
-    ERC20("SealHubMemorabiliaToken", "SHMT")
+    ERC1155(_uri)
     SealHubChecker(_sealHub)
   {
     nullifierCreatorVerifier = NullifierCreatorVerifier(
@@ -100,7 +101,7 @@ contract SealHubMemorabiliaToken is ERC20, SealHubChecker, Versioned {
       "Invalid proof"
     );
     // Mint the token
-    _mint(msg.sender, 1);
+    _mint(msg.sender, 0, 1, "");
     // Add the nullifier
     nullifiers[_pubSignals[1]] = true;
   }
