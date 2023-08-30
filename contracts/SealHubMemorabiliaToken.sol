@@ -61,18 +61,24 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@big-whale-labs/seal-hub-kit/contracts/SealHubChecker.sol";
+import "@big-whale-labs/versioned-contract/contracts/Versioned.sol";
 import "./NullifierCreatorVerifier.sol";
 
-contract SealHubMemorabiliaToken is ERC20, SealHubChecker {
+contract SealHubMemorabiliaToken is ERC20, SealHubChecker, Versioned {
   // State
   mapping(uint => bool) public nullifiers;
   NullifierCreatorVerifier private nullifierCreatorVerifier;
   SealHubChecker private sealHubChecker;
 
   constructor(
+    string memory _version,
     address _nullifierCreatorVerifier,
     address _sealHub
-  ) ERC20("SealHubMemorabiliaToken", "SHMT") SealHubChecker(_sealHub) {
+  )
+    Versioned(_version)
+    ERC20("SealHubMemorabiliaToken", "SHMT")
+    SealHubChecker(_sealHub)
+  {
     nullifierCreatorVerifier = NullifierCreatorVerifier(
       _nullifierCreatorVerifier
     );

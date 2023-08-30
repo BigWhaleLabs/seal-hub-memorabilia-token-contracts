@@ -1,7 +1,5 @@
-import { cwd } from 'process'
+import { SEAL_HUB_CONTRACT_ADDRESS } from '@big-whale-labs/constants'
 import { ethers, run } from 'hardhat'
-import { readdirSync } from 'fs'
-import { resolve } from 'path'
 import { utils } from 'ethers'
 import { version } from '../package.json'
 
@@ -17,18 +15,19 @@ async function main() {
   const { chainId } = await provider.getNetwork()
   const chains = {
     1: 'mainnet',
-    3: 'ropsten',
-    4: 'rinkeby',
     5: 'goerli',
   } as { [chainId: number]: string }
   const chainName = chains[chainId]
-  const contractNames = readdirSync(resolve(cwd(), 'contracts')).map((s) =>
-    s.substring(0, s.length - 4)
-  )
+  const contractNames = ['NullifierCreatorVerifier', 'SealHubMemorabiliaToken']
+  let verifierAddress = ''
   for (const verifierContractName of contractNames) {
     console.log(`Deploying ${verifierContractName}...`)
     const Verifier = await ethers.getContractFactory(verifierContractName)
-    const verifier = await Verifier.deploy(version)
+    const constructorArguments =
+      verifierContractName === 'NullifierCreatorVerifier'
+        ? [version]
+        : [version, verifierAddress, SEAL_HUB_CONTRACT_ADDRESS]
+    const verifier = await Verifier.deploy(...constructorArguments)
     console.log(
       'Deploy tx gas price:',
       utils.formatEther(verifier.deployTransaction.gasPrice || 0)
@@ -46,7 +45,7 @@ async function main() {
     try {
       await run('verify:verify', {
         address,
-        constructorArguments: [version],
+        constructorArguments,
       })
     } catch (err) {
       console.log(
@@ -63,6 +62,9 @@ async function main() {
         chainName !== 'mainnet' ? `${chainName}.` : ''
       }etherscan.io/address/${address}`
     )
+    if (verifierContractName === 'NullifierCreatorVerifier') {
+      verifierAddress = address
+    }
   }
 }
 
