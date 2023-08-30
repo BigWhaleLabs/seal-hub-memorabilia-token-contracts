@@ -33,6 +33,7 @@
     "download-ptau": "curl https://hermez.s3-eu-west-1.amazonaws.com/powersOfTau28_hez_final_15.ptau -o pot/pot15_final.ptau"
   },
   "devDependencies": {
+    "@big-whale-labs/constants": "^0.2.15",
     "@big-whale-labs/versioned-contract": "^1.0.2",
     "@ethereumjs/util": "^8.0.5",
     "@ethersproject/providers": "^5.7.2",

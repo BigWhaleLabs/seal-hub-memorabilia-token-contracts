@@ -57,6 +57,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@big-whale-labs/constants@npm:^0.2.15":
+  version: 0.2.15
+  resolution: "@big-whale-labs/constants@npm:0.2.15"
+  checksum: d67041f388f80d807e19d8360754cc3b72db6ba3673951a5b6553b774ab3bbf77d7e699ffff9aae27d4d5f39837657e63313f7f0f7e6f94639f63a0ee2cbb6b4
+  languageName: node
+  linkType: hard
+
 "@big-whale-labs/poseidon@npm:^0.0.5":
   version: 0.0.5
   resolution: "@big-whale-labs/poseidon@npm:0.0.5"
@@ -99,6 +106,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@big-whale-labs/seal-hub-memorabilia-token-contracts@workspace:."
   dependencies:
+    "@big-whale-labs/constants": ^0.2.15
     "@big-whale-labs/seal-hub-kit": ^0.0.36
     "@big-whale-labs/versioned-contract": ^1.0.2
     "@ethereumjs/util": ^8.0.5
