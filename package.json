@@ -1,10 +1,10 @@
 {
-  "name": "@big-whale-labs/seal-hub-verifier-template",
-  "version": "0.1.3",
-  "description": "SealHub verifier template",
+  "name": "@big-whale-labs/seal-hub-memorabilia-token-contracts",
+  "version": "0.0.1",
+  "description": "Contracts for SealHub memorabilia token",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BigWhaleLabs/seal-hub-verifier-template"
+    "url": "git+https://github.com/BigWhaleLabs/seal-hub-memorabilia-token-contracts"
   },
   "license": "MIT",
   "np": {
@@ -22,7 +22,6 @@
   "scripts": {
     "build": "yarn hardhat compile",
     "test": "yarn hardhat test",
-    "coverage": "yarn hardhat compile --force && node --max_old_space_size=6144 node_modules/.bin/hardhat coverage --testfiles 'test/**/*.ts' --show-stack-traces",
     "deploy": "yarn hardhat run --network deploy scripts/deploy.ts",
     "eth-lint": "yarn solhint 'contracts/**/*.sol'",
     "lint": "prettier --check . && eslint --max-warnings 0 --ext ts scripts test && yarn eth-lint",
@@ -72,7 +71,6 @@
     "prettier-plugin-solidity": "^1.1.3",
     "snarkjs": "^0.7.0",
     "solhint": "^3.6.2",
-    "solidity-coverage": "^0.8.4",
     "ts-node": "^10.9.1",
     "typechain": "^8.3.1",
     "typescript": "^5.2.2"

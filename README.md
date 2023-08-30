@@ -1,18 +1,17 @@
-# SealHub verifier template
-
-Circom template to be used to verify a SealHub commitment.
+# Contracts for SealHub memorabilia token
 
 ## Usage
 
-1. Clone the repository with `git clone git@github.com:BigWhaleLabs/seal-hub-verifier-template.git`
+1. Clone the repository with `git clone git@github.com:BigWhaleLabs/seal-hub-memorabilia-token-contracts`
 2. Install the dependencies with `yarn`
 3. Add environment variables to your `.env` file
-4. Check out `yarn generate-inputs` script to get inputs
-5. Run `yarn compile` to compile the circom circuits, create proof, verify proof, export verifier as a solidity Verifier.sol
-6. Run `yarn test` to run the test suits
-7. Use the artifacts from the `public` folder in [snarkjs](https://github.com/iden3/snarkjs)
-8. Run `yarn deploy` to deploy the verifier smart contracts to blockchain
-9. Run `yarn release` to publish an NPM package with typings that can later be used in any of your JS/TS projects
+4. Run `yarn download-ptau` to download the correct ptau file
+5. Check out `yarn generate-inputs` script to get inputs
+6. Run `yarn compile` to compile the circom circuits, create proof, verify proof, export verifier as a solidity Verifier.sol
+7. Run `yarn test` to run the test suits
+8. Use the artifacts from the `public` folder in [snarkjs](https://github.com/iden3/snarkjs)
+9. Run `yarn deploy` to deploy the verifier smart contracts to blockchain
+10. Run `yarn release` to publish an NPM package with typings that can later be used in any of your JS/TS projects
 
 ## Environment variables
 
