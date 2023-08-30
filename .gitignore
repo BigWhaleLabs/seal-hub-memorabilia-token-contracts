@@ -18,10 +18,6 @@ artifacts
 # logs
 *.log
 
-# PoT files
-pot/*
-!pot/pot16_final.ptau
-
 # yarn
 .pnp.*
 .yarn/*

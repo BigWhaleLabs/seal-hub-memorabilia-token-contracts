@@ -54,9 +54,6 @@ template NullifierCreator() {
   // !! e.g. proving that it's a part of a merkle tree of Cryptopunk holders and exporting
   // !! the merkle root
   // !! But we *should not* export it as a public output
-
-  // Print the address
-  log(address); // *Never* export this publicly
 }
 
 component main = NullifierCreator();
