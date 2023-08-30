@@ -1,6 +1,6 @@
 {
   "name": "@big-whale-labs/seal-hub-memorabilia-token-contracts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Contracts for SealHub memorabilia token",
   "repository": {
     "type": "git",
