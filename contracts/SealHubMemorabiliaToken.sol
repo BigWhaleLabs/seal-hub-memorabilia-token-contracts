@@ -68,7 +68,6 @@ contract SealHubMemorabiliaToken is ERC1155, SealHubChecker, Versioned {
   // State
   mapping(uint => bool) public nullifiers;
   NullifierCreatorVerifier private nullifierCreatorVerifier;
-  SealHubChecker private sealHubChecker;
 
   constructor(
     string memory _version,
